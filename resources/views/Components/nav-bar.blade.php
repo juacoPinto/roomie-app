@@ -6,5 +6,13 @@
             <span>Empieza tu Busqueda</span>
         </button>
     </div>
-    <a>Inicia sesion</a>
+    @guest
+    <a href="/login" >Inicia sesion</a>
+    @endguest
+    @auth
+        <form action="/logout" method="POST" >
+            @csrf
+            <button type="submit" >Cerrar Sesion</button>
+        </form>
+    @endauth
 </nav>
