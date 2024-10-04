@@ -79,10 +79,11 @@
                                 @csrf
                                 <button class="block px-4 py-2 text-sm text-gray-700" type="submit" >Cerrar Sesion</button>
                             </form>
-                        @endauth
+
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-4">Dashboard</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">Mis Me Gusta</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Editar Cuenta</a>
+                        @endauth
                     </div>
                 </div>
             </div>
