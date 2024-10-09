@@ -29,6 +29,6 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect('/profile')->with('user', $user);
     }
 }
