@@ -17,7 +17,7 @@ class ImageController extends Controller
         $loggedUser = auth()->user();
 
         $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
 
@@ -33,6 +33,6 @@ class ImageController extends Controller
         //$loggedUser['image'] = $path . $filename;
         $loggedUser->update(['image' => 'images/' . $filename]);
         //dd('images/', $filename);
-        return view('profile.show')->with('loggedUser', $loggedUser);
+        return redirect('/profile/' . $loggedUser->id);
     }
 }

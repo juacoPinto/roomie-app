@@ -10,19 +10,19 @@
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $loggedUser->name  }}</h5>
         </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Edad: {{ $loggedUser->age  }}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ocupacion: {{ $loggedUser->occupation  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Edad: {{ $profileToShow['age']  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ocupacion: {{ $profileToShow['occupation']  }}</p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Email: {{ $loggedUser->email  }}</p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Telefono: {{ $loggedUser->phone  }}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Direccion: {{ $loggedUser->adress  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Direccion: {{ $loggedUser->address  }}</p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Busca: {{ $loggedUser->user_type  }}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Hijos: {{ $loggedUser->children  }}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Fuma: {{ $loggedUser->smoker  }}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Mascota: {{ $loggedUser->pet  }}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Genero: {{ $loggedUser->gender  }}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Descripcion: {{ $loggedUser->description  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Hijos: {{ $profileToShow['children']  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Fuma: {{ $profileToShow['smoker']  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Mascota: {{ $profileToShow['pet']  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Genero: {{ $profileToShow['gender']  }}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Descripcion: {{ $profileToShow['description']  }}</p>
 
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <a href="/profile/{{ $loggedUser->id  }}/edit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Editar
             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>

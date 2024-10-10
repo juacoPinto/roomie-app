@@ -54,4 +54,45 @@ class ProfileController extends Controller
         return redirect('/image');
     }
 
+    public function show(User $user)
+    {
+        $loggedUser = auth()->user();
+
+        $profileToShow = $user->profile;
+
+        //dd($profileToShow['age']);
+        return view('profile.show')->with('profileToShow', $profileToShow)->with('loggedUser', $loggedUser);
+    }
+
+    public function edit(User $user)
+    {
+        $loggedUser = auth()->user();
+
+        return view('profile.edit')->with('loggedUser', $loggedUser);
+    }
+
+    public function update()
+    {
+        $loggedUser = auth()->user();
+
+        $profile = $loggedUser->profile;
+
+        //dd($profile);
+
+        $validatedData = request()->validate([
+            'age' => 'required',
+            'move_date' => [],
+            'occupation' => 'required',
+            'children' => 'required',
+            'pet' => 'required',
+            'smoker' => 'required',
+            'gender' => 'required',
+            'description' => 'required'
+        ]);
+
+        $profile->update($validatedData);
+
+        return redirect('/profile/' . $loggedUser->id);
+    }
+
 }

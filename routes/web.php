@@ -22,6 +22,9 @@ Route::post('/logout', [SessionController::class, 'destroy']);
 //PERFIL
 Route::get('/profile', [ProfileController::class, 'create']);
 Route::post('/profile', [ProfileController::class, 'store']);
+Route::get('/profile/{user}', [ProfileController::class, 'show']);
+Route::get('/profile/{user}/edit', [ProfileController::class, 'edit']);
+Route::patch('/profile/{user}', [ProfileController::class, 'update']);
 
 //MANEJO DE IMAGENES
 Route::get('/image', [ImageController::class, 'create']);
