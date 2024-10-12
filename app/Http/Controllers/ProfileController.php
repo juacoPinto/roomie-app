@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -51,7 +53,7 @@ class ProfileController extends Controller
 
         Profile::create($validatedData);
 */
-        return redirect('/image');
+        return redirect('/profile/' . $foreignKey);
     }
 
     public function show(User $user)
@@ -64,8 +66,20 @@ class ProfileController extends Controller
         return view('profile.show')->with('profileToShow', $profileToShow)->with('loggedUser', $loggedUser);
     }
 
-    public function edit(User $user)
+    public function edit(User $user, Profile $profile)
     {
+        dd('entrando a editar perfil');
+        Gate::define('edit-profile', function($test,Profile $profile){
+            return  $profile->user->is($user);
+        });
+
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+
+        Gate::authorize('edit-profile', $profile);
+
         $loggedUser = auth()->user();
 
         return view('profile.edit')->with('loggedUser', $loggedUser);
