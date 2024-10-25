@@ -56,42 +56,22 @@ class ProfileController extends Controller
         return redirect('/profile/' . $foreignKey);
     }
 
-    public function show(User $user)
+    public function show(Profile $profile)
     {
         $loggedUser = auth()->user();
-
-        $profileToShow = $user->profile;
-
-        //dd($profileToShow['age']);
-        return view('profile.show')->with('profileToShow', $profileToShow)->with('loggedUser', $loggedUser);
+        //dd($user);
+        return view('profile.show')->with('profile', $profile)->with('loggedUser', $loggedUser);
     }
 
-    public function edit(User $user, Profile $profile)
+    public function edit(Profile $profile)
     {
-        dd('entrando a editar perfil');
-        Gate::define('edit-profile', function($test,Profile $profile){
-            return  $profile->user->is($user);
-        });
-
-        if(Auth::guest())
-        {
-            return redirect('/login');
-        }
-
-        Gate::authorize('edit-profile', $profile);
-
         $loggedUser = auth()->user();
 
-        return view('profile.edit')->with('loggedUser', $loggedUser);
+        return view('profile.edit')->with('loggedUser', $loggedUser)->with('profile', $profile);
     }
 
-    public function update()
+    public function update(Profile $profile)
     {
-        $loggedUser = auth()->user();
-
-        $profile = $loggedUser->profile;
-
-        //dd($profile);
 
         $validatedData = request()->validate([
             'age' => 'required',
@@ -106,7 +86,7 @@ class ProfileController extends Controller
 
         $profile->update($validatedData);
 
-        return redirect('/profile/' . $loggedUser->id);
+        return redirect('/profile/' . $profile->id);
     }
 
 }

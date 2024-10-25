@@ -2,7 +2,7 @@
 <x-nav-bar></x-nav-bar>
 
 <body>
-<form class="max-w-sm mx-auto" action="/profile/{{ $loggedUser->id  }}" method="POST" >
+<form class="max-w-sm mx-auto" action="/profile/{{ $profile->id  }}" method="POST" >
     @csrf
     @method('PATCH')
     <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Edad:</label>

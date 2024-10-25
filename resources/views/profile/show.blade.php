@@ -8,23 +8,24 @@
         </a>
         <div class="p-5">
             <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $profileToShow->user['name'] }}</h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $profile->user['name'] }}</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Edad: {{ $profileToShow['age']  }}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ocupacion: {{ $profileToShow['occupation']  }}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Que Busca: {{ $profileToShow->user['user_type']  }}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Hijos: {{ $profileToShow['children']  }}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Fuma: {{ $profileToShow['smoker']  }}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Mascota: {{ $profileToShow['pet']  }}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Genero: {{ $profileToShow['gender']  }}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Descripcion: {{ $profileToShow['description']  }}</p>
-
-            <a href="/profile/{{ $profileToShow->user['id']  }}/edit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Edad: {{ $profile->age  }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ocupacion: {{ $profile->occupation  }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Que Busca: {{ $profile->user['user_type']  }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Hijos: {{ $profile->children  }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Fuma: {{ $profile->smoker }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Mascota: {{ $profile->pet }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Genero: {{ $profile->gender  }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Descripcion: {{ $profile->description }}</p>
+            @can('edit-profile',$profile)
+            <a href="/profile/{{  $profile->id }}/edit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Editar
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
             </a>
+            @endcan
         </div>
     </div>
 </body>

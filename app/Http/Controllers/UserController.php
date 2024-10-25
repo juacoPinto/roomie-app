@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
@@ -30,7 +31,6 @@ class UserController extends Controller
         Auth::login($user);
 
         return redirect('/image');
-        //return redirect('/profile')->with('user', $user);
     }
 
     public function show(User $user)
@@ -40,11 +40,26 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        //$loggedUser = Auth::user();
+        //$userToEdit = $user;
+        //dd($loggedUser->is(Auth::user()));
+        //dd($loggedUser->is($userToEdit));
+        //dd($user->id, $loggedUser->id );
+
+
+//        if(Auth::guest())
+//        {
+//            return redirect('/login');
+//        }
+        //dd($loggedUser);
+        //Gate::authorize('edit-user', $user);
+
         return view ('user.edit')->with('user',$user);
     }
 
     public function update(Request $request, User $user)
     {
+
         $validatedData = $request->validate([
             'name' => ['required','max:255'],
             'email' => ['required','email','max:255'],
