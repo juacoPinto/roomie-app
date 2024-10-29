@@ -38,7 +38,6 @@ class ProfileController extends Controller
 
 /**
         $validatedData = request()->validate([
-            'user_id' => [],
             'age'=>['required','string','min:1'],
             'move_date'=>[],
             'occupation'=>['required','string','min:1'],

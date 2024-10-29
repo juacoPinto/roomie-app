@@ -5,12 +5,9 @@
     <x-nav-bar>
 
     </x-nav-bar>
-    <h1 class="text-3xl font-bold underline">
-        BIENVENIDOS A ROOMIE APP
-    </h1>
-    <x-header>
+    <x-main>
 
-    </x-header>
+    </x-main>
     <x-footer>
 
     </x-footer>

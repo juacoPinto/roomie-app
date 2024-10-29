@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
@@ -42,3 +43,8 @@ Route::post('/image', [ImageController::class, 'store']);
 
 //DASHBOARD
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+//ROOM
+Route::get('/room', [RoomController::class, 'create']);
+Route::post('/room', [RoomController::class, 'store']);
+Route::get('/room/{room}', [RoomController::class, 'show']);
