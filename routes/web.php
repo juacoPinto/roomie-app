@@ -45,6 +45,7 @@ Route::post('/image', [ImageController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 //ROOM
-Route::get('/room', [RoomController::class, 'create']);
+Route::get('/room', [RoomController::class, 'index']);
+Route::get('/room/create', [RoomController::class, 'create']);
 Route::post('/room', [RoomController::class, 'store']);
 Route::get('/room/{room}', [RoomController::class, 'show']);

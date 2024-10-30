@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
 {
+    public function index()
+    {
+        return view('room.index');
+    }
+
     public function create()
     {
         $communes = Commune::all()->sortBy('name');
@@ -17,11 +22,24 @@ class RoomController extends Controller
         return view('room.create')->with('communes', $communes);
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $user = Auth::user();
 
         $room = new Room();
+
+        $request->validate([
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        if($request->has('image')){
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            //$path = 'images/';
+
+            $image->move('images/', $filename);
+        }
 
         $room->user_id = $user->id;
         $room->preferred_gender = request('preferred_gender');
@@ -39,10 +57,16 @@ class RoomController extends Controller
         $room->location = request('location');
         $room->type = request('type');
         $room->price  = request('price');
+        $room->image = '';
+
+        $room->update(['image' => 'images/' . $filename]);
+
 
         $room->save();
 
-        return redirect('/room/' . $room->id);
+        //$room->update(['image' => 'images/' . $filename]);
+
+        return redirect('/room/' . $room->id)->with('room', $room);
     }
 
     public function show(Room $room)
